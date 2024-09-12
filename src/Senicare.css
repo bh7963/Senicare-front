@@ -1,0 +1,125 @@
+/* 
+  Senicare 프로젝트의 공통 CSS를 정의
+*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nanum+Gothic&display=swap');
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+:root {
+  --primary-color: rgba(0, 192, 122, 1);
+  --primary-10-color: rgba(0, 192, 122, 0.1);
+  --primary-20-color: rgba(0, 192, 122, 0.2);
+  --error-color: rgba(255, 84, 64, 1);
+  --gray-color: rgba(138, 146, 166, 1);
+  --dark-gray-color: rgba(64, 64, 64, 1);
+  --default-color: rgba(35, 45, 66, 1);
+}
+
+body {
+  margin: 0px;
+  font-family: 'Pretendard', sans-serif;
+}
+
+#main-wrapper{
+  padding: 24px;
+  background-color: rgba(238, 238, 238, 0.5);
+}
+
+.message.error {
+  color: var(--error-color);
+}
+
+.message.primary {
+  color: var(--primary-color);
+}
+
+.button {
+  border-radius: 6px;
+    padding: 8px 24px;
+
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 175%;
+    text-align: center;
+
+    color: rgba(255, 255, 255, 1);
+}
+
+.button:hover {
+  opacity: 0.9;
+  cursor: pointer
+}
+
+.button.primary{
+  background-color : var(--primary-color);
+}
+
+.button.second{
+  background-color: var(--primary-10-color);
+  color: var(--primary-color);
+}
+.button.disable {
+  background-color: var(--gray-color);
+}
+
+.disalbe:hover{
+  opacity: 1;
+  cursor:default;
+}
+
+.full-width {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.link {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 175%;
+
+  align-self: center;
+  color: rgba(113, 113, 113, 1);
+}
+
+.link:hover {
+  cursor: pointer;
+  font-weight: bolder;
+}
+
+.divider {
+  width: 100%;
+
+  border-bottom: 1px solid rgba(238, 238, 238, 1);
+}
+
+.sns-button {
+  border-radius: 50%;
+
+  width: 56px;
+  height: 56px;
+
+  background-size: 100% 100%;
+}
+
+.sns-button:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.sns-button.md{
+  width:40px;
+  height:40px;
+}
+
+.sns-button.kakao {
+  background-image: url(/public/image/kakao-button.png);
+}
+
+.sns-button.naver {
+  background-image: url(/public/image/naver-button.png);
+}

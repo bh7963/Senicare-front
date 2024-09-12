@@ -1,0 +1,87 @@
+#auth-wrapper {
+    display: flex;
+
+    width: 100%;
+    min-width: 1440px;
+    height: 100vh;
+    min-height: 964px;
+}
+
+.auth-image {
+    width: 830px;
+    background-image: url(/public/image/main-image.png);
+    background-size: cover;
+
+}
+
+.auth-container {
+    flex: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+
+    width: 380px;
+
+}
+
+.title-box {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.title-box .title {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 173%;
+    color: var(--dark-gary-color);
+    /* 51.9px */
+}
+
+.title-box .logo {
+    width: 30px;
+    height: 30px;
+    background-image: url(/public/image/logo.png);
+    background-size: 100% 100%;
+}
+
+.input-container {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+
+.button-container {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.sns-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.sns-container .sns-title {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--gray-color);
+}
+
+.sns-button-container {
+    display: flex;
+    gap: 24px;
+}

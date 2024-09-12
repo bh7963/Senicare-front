@@ -1,0 +1,142 @@
+#main-layout {
+
+    display: grid;
+    grid-template:
+        "logo top" 77px 
+        "side main" minmax(867px, auto) 
+        / 257px minmax(1182px, 100%);
+    
+    
+}
+
+/* Logo style */
+#layout-logo {
+    grid-area: logo;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-bottom: 1px solid rgba(233, 236, 239);
+    border-right: 1px solid rgba(233, 236, 239);
+
+     /* 드래그 방지 */
+    user-select: none;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select: none;
+}
+
+#layout-logo .box {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+
+    cursor: default;
+}
+
+#layout-logo .title{
+    color: rgba(64,64,64,1);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 173%;
+}
+
+#layout-logo .icon{
+    height: 30px;
+    width: 30px;
+
+    background-image: url('/public/image/logo.png');
+    background-size: 100% 100%;
+}
+
+/* Top style */
+#layout-top {
+    grid-area: top;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 1px solid rgba(233, 236, 239);
+    padding: 0 24px;
+
+    user-select: none;
+
+    
+}
+#layout-top .path{
+    color: rgba(64,64,64,1);
+    font-size: 24px;
+    font-weight: 700;
+    
+}
+
+/* Side Navgation style */
+#layout-side-navigation {
+    grid-area: side;
+    padding: 16px 12px;
+
+
+}
+
+#layout-side-navigation .navigation{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+#layout-side-navigation .navigation-item{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-radius: 6px;
+    padding: 8px 24px;
+    
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--gray-color);
+}
+
+#layout-side-navigation .navigation-item:hover{
+    cursor: pointer;
+    background-color: var(--primary-10-color);
+}
+
+#layout-side-navigation .navigation-item.active{
+
+    background-color: var(--primary-color);
+    color: rgba(255,255,255,1);
+}
+
+#layout-side-navigation .icon{
+    width: 24px;
+    height: 24px;
+
+    background-size: 100% 100%;
+}
+
+#layout-side-navigation .icon.active{
+    opacity: 0.5;
+}
+
+.cs-icon{
+    background-image: url('/public/image/cs-icon.png');
+}
+.mm-icon{
+    background-image: url('/public/image/mm-icon.png');
+}
+.hr-icon{
+    background-image: url('/public/image/hr-icon.png');
+}
+
+.cs-active-icon{
+    background-image: url('/public/image/cs-active-icon.png');
+}
+.mm-active-icon{
+    background-image: url('/public/image/mm-active-icon.png');
+}
+.hr-active-icon{
+    background-image: url('/public/image/hr-active-icon.png');
+}
