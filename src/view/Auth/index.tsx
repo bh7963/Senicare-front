@@ -2,10 +2,16 @@ import React, { ChangeEvent, useEffect, useState } from 'react'
 import './style.css';
 import InputBox from 'src/components/InputBox';
 import axios from 'axios';
-import { IdCheckRequest } from 'src/apis';
-import { IdCheckRequestDto } from 'src/apis/dto/request/auth';
+import { IdCheckRequest, signInRequest, signUpRequest, telAuthCheckRequest, telAuthRequest } from 'src/apis';
+import { IdCheckRequestDto, SignInRequestDto, SignUpRequestDto, TelAuthCheckRequestDto, TelAuthRequestDto } from 'src/apis/dto/request/auth';
 import { request } from 'http';
 import { ResponseDto } from 'src/apis/dto/response';
+
+import { useCookies } from 'react-cookie';
+import {SignInResponseDto} from 'src/apis/dto/response/auth/';
+import { ACCESS_TOKEN, CS_APSOLUTE_PATH, ROOT_PATH } from 'src/constants';
+import { useNavigate } from 'react-router';
+
 
 type AuthPath = '회원가입' | '로그인';
 
@@ -80,6 +86,60 @@ function SignUp( {onPathChange }:AuthComponentProps) {
         setIdMessage(message);
         setIdMessageError(!isSuccessed);
         setCheckedId(isSuccessed);
+    };
+
+    // function: 전화번호 인증 Response처리 함수 //
+    const telAuthResponse = (responseBody: ResponseDto | null) => {
+        
+        const message = 
+        !responseBody ? '서버에 문제가 있습니다. ':
+        responseBody.code === 'VF' ? '숫자 11자 입력해주세요. ':
+        responseBody.code === 'DT' ? '이미 사용중인 전화번호 입니다. ':
+        responseBody.code === 'TF' ? '서버에 문제가 있습니다.':
+        responseBody.code === 'DBE' ? '서버에 문제가 있습니다. ':
+        responseBody.code === 'SU' ? '인증번호가 전송되었습니다. ': '';
+
+        const isSuccessed = responseBody !== null && responseBody.code === 'SU';
+        setTelNumberMessage(message);
+        setTelNumberMessageError(!isSuccessed);
+        setSendTelNumber(isSuccessed);
+
+    };
+
+    // function: 전화번호 인증 확인 Response 처리 함수 //
+    const telAuthCheckResponse = (responseBody: ResponseDto | null) => {
+        
+        const message =
+            !responseBody ? '서버에 문제가 있습니다. ':
+            responseBody.code === 'VF' ? '올바른 데이터가 아닙니다. ':
+            responseBody.code === 'TAF' ? '인증번호가 일치하지 않습니다. ':
+            responseBody.code === 'DBE' ? '서버에 문제가 있습니다. ':
+            responseBody.code === 'SU' ? '인증번호가 확인되었습니다. ': ''
+
+        const isSuccessed = responseBody !== null && responseBody.code ==='SU'; 
+        setAuthNumberMessage(message);
+        setAuthNumberMessageError(!isSuccessed);
+        setCheckedAuthNumber(isSuccessed);
+    };
+
+    // function: 회원가입 Response 처리 함수 //
+    const signUpResponse = (responseBody: ResponseDto | null) => {
+        const message = 
+            !responseBody ? '서버에 문제가 있습니다. ':
+            responseBody.code === 'VF' ? '올바른 데이터가 아닙니다. ':
+            responseBody.code === 'DI' ? '중복된 아이디 입니다. ':
+            responseBody.code === 'DT' ? '중복된 전화번호 입니다. ':
+            responseBody.code === 'TF' ? '서버에 문제가 있습니다.':
+            responseBody.code === 'TAF' ? '인증번호가 일치하지 않습니다. ':
+            responseBody.code === 'DBE' ? '서버에 문제가 있습니다. ':
+            responseBody.code === 'SU' ? '회원가입에 성공했습니다. ': ''
+
+        const isSuccessed = responseBody !== null && responseBody.code ==='SU';
+        if(!isSuccessed){
+            alert(message)
+            return;
+        }
+        onPathChange('로그인');
     }
     
 
@@ -117,19 +177,29 @@ function SignUp( {onPathChange }:AuthComponentProps) {
     // event handler: 회원가입 버튼 클릭 이벤트 처리 //
     const onSignUpButtonHandler = () => {
         if (!isComplete) return;
+
+        const requestBody: SignUpRequestDto = {
+            name,
+            userId: id,
+            password,
+            telNumber,
+            authNumber,
+            joinPath:'HOME',
+        };
+        signUpRequest(requestBody).then(signUpResponse)
         
         onPathChange('로그인');
 
     };
     // effect: 비밀번호 및 비밀번호 확인 변경시  실행할 함수 //
     useEffect(() => {
-        if (!password || passwordCheck) return;
+        if (!password || !passwordCheck) return;
 
         const isEqual = password === passwordCheck;
         const message = isEqual ? '' : '비밀번호가 일치하지 않습니다.';
         setPasswordCheckMessage(message);
         setPasswordCheckMessageError(!isEqual);
-        setCheckedPassword(!isEqual)
+        setCheckedPassword(isEqual)
     }, [password, passwordCheck]);
 
     // event handler: 비밀번호확인 변경 이벤트 처리 //
@@ -177,21 +247,28 @@ function SignUp( {onPathChange }:AuthComponentProps) {
             setTelNumberMessageError(true);
             return;
         }
-        setTelNumberMessage('인증번호가 전송되었습니다.');
-        setTelNumberMessageError(false);
-        setSendTelNumber(true);
+        const RequestBody: TelAuthRequestDto = {
+            telNumber
+        }
+        telAuthRequest(RequestBody).then(telAuthResponse);
+
+        // setTelNumberMessage('인증번호가 전송되었습니다.');
+        // setTelNumberMessageError(false);
+        // setSendTelNumber(true);
 
     };
 
-    // 인증번호 버튼을 클릭했을 때 alert발생
+    // event handler: 전화번호 인증 이벤트 //
     const onAuthNumberCheckClickHandler = () => {
         if (!authNumber) return;
+        
+        const requestBody: TelAuthCheckRequestDto = {
+            telNumber,
+            authNumber
+        } 
+        telAuthCheckRequest(requestBody).then(telAuthCheckResponse);
 
-        const isMatched = authNumber === 'Q1W2';
-        const message = isMatched ? '인증되었습니다.' : '인증번호가 틀렸습니다.'
-        setAuthNumberMessage(message);
-        setAuthNumberMessageError(!isMatched);
-        setCheckedAuthNumber(isMatched);
+        
     };
     // render: 회원가입 화면 컴포넌트 렌더링 //
     return (
@@ -223,37 +300,72 @@ function SignUp( {onPathChange }:AuthComponentProps) {
     )
 }
 
+// component: 로그인 화면 컴포넌트 //
 function SignIn({ onPathChange }:AuthComponentProps) {
 
+    // state: 쿠키 상태 //
+
+    const [ Cookies, setCookies ] = useCookies();
+
+    // state: 로그인 정보 상태 //
     const [id, setId] = useState<string>('');
     const [password, setPassword] = useState<string>('');
 
+    // state: 로그인 입력 메세지 상태 //
     const [message, setMessage] = useState<string>('');
 
+    // function: 네비게이터 함수 //
+    const navigator = useNavigate();
+
+    // function: 로그인 Response 처리 함수 //
+    const signInResponse = (responseBody: SignInResponseDto | ResponseDto | null) => {
+        const message = 
+            !responseBody ? '서버에 문제가 있습니다. ':
+            responseBody.code === 'VF' ? '아이디와 비밀번호를 모두 입력하세요. ':
+            responseBody.code === 'SF' ? '로그인 정보가 일치하지 않습니다. ':
+            responseBody.code === 'TCF' ? '서버에 문제가 있습니다. ':
+            responseBody.code === 'DBE' ? '서버에 문제가 있습니다. ': '';
+
+        const isSuccessed = responseBody !== null && responseBody.code ==='SU';
+        if(!isSuccessed) {
+            setMessage(message);
+            return;
+        }
+        const { accessToken, expiration } = responseBody as SignInResponseDto;
+        const expires = new Date(Date.now() + (expiration * 1000));
+        setCookies(ACCESS_TOKEN, accessToken, { path: ROOT_PATH, expires });
+
+        navigator(CS_APSOLUTE_PATH);
+        
+        
+    }
+
+    // event handler: 아이디 변경 이벤트 처리 //
     const onIdChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
         setId(value);
     };
-
+    // event handler: 비밀번호 변경 이벤트 처리 //
     const onPasswordChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
         setPassword(value);
     };
-
-    const onSignUpButtonHandler = () => {
-        if(!id || !password) return;    
+    // event handler: 로그인 버튼 클릭 이벤트 처리 //
+    const onSignUpButtonHandler = () => {    
         
-        if(id !== 'qwer1234' || password !== 'asdf0987'){
-            setMessage('로그인정보가 일치하지 않습니다.')
-            return;
+        const requestBody: SignInRequestDto = {
+            userId: id,
+            password
         }
-        alert('로그인성공')
+        signInRequest(requestBody).then(signInResponse);
+
     }
 
+    // effect: 아이디 및 비밀번호 변경시 실행할 함수 //
     useEffect(()=>{
         setMessage('');
     },[id, password])
-
+    // render: 로그인 화면 컴포넌트 렌더링 //
     return (
         <div className="auth-box">
             <div className="title-box">
