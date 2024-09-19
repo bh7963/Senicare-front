@@ -11,22 +11,30 @@ import { useCookies } from 'react-cookie';
 import {SignInResponseDto} from 'src/apis/dto/response/auth/';
 import { ACCESS_TOKEN, CS_APSOLUTE_PATH, ROOT_PATH } from 'src/constants';
 import { useNavigate } from 'react-router';
+import { useSearchParams } from 'react-router-dom';
 
 
 type AuthPath = '회원가입' | '로그인';
-
+// interface: SNS 로그인 객체 //
 interface SnsContainer {
     type: AuthPath;
+    
+}
+// event handler: SNS버튼 클릭 이벤트 처리
+const onSNSButtonClickHandler = (sns: 'kakao' | 'naver') => {
+    window.location.href = `http://localhost:4000/api/v1/auth/sns-sign-in/${sns}`
 }
 
+// component: SNS 로그인 회원가입 //
 function SnsContainer({ type }:SnsContainer) {
 
+    // render: SNS 로그인 회원가입 컴포넌트 렌더링 //
     return (
         <div className="sns-container">
             <div className="title">SNS {type}</div>
             <div className="sns-button-container">
-                <div className={`sns-button ${type === '회원가입' ? 'md ':''}kakao`}></div>
-                <div className={`sns-button ${type === '회원가입' ? 'md ':''}naver`}></div>
+                <div className={`sns-button ${type === '회원가입' ? 'md ':''}kakao`} onClick={()=>{onSNSButtonClickHandler('kakao')}}></div>
+                <div className={`sns-button ${type === '회원가입' ? 'md ':''}naver`} onClick={()=>{onSNSButtonClickHandler('naver')}}></div>
             </div>
         </div>
     )
@@ -37,6 +45,11 @@ interface AuthComponentProps{
 }
 // component: 요양사
 function SignUp( {onPathChange }:AuthComponentProps) {
+
+    // state: Query Parameter 상태 //
+    const [queryParam] = useSearchParams();
+    const snsId = queryParam.get('snsId');
+    const joinPath = queryParam.get('joinPath');
 
     // state: 요양사 정보 입력 상태 //
     const [name, setName] = useState<string>('');
@@ -69,6 +82,10 @@ function SignUp( {onPathChange }:AuthComponentProps) {
     const [isSendTelNumber, setSendTelNumber] = useState<boolean>(false);
     const [isCheckedAuthNumber, setCheckedAuthNumber] = useState<boolean>(false);
 
+    // variable: SNS 회원가입 여부 //
+    const isSnsSignUp = snsId !== null && joinPath !== null;
+
+    // variable: 회원가입 가능 여부 //
     const isComplete = name && id && isCheckedId && password && passwordCheck && isMatchedPassword && isCheckedPassword
     && telNumber && isSendTelNumber && authNumber && isCheckedAuthNumber;
 
@@ -184,7 +201,8 @@ function SignUp( {onPathChange }:AuthComponentProps) {
             password,
             telNumber,
             authNumber,
-            joinPath:'HOME',
+            joinPath: joinPath ? joinPath : 'home',
+            snsId
         };
         signUpRequest(requestBody).then(signUpResponse)
         
@@ -277,9 +295,11 @@ function SignUp( {onPathChange }:AuthComponentProps) {
                 <div className="title">시니케어</div>
                 <div className="logo"></div>
             </div>
-            <SnsContainer type = '회원가입'/>
-            <div style={{ width: '64px' }} className="divider"></div>
-
+            {isSnsSignUp &&
+                <SnsContainer type = '회원가입'/>
+            }
+                <div style={{ width: '64px' }} className="divider"></div>
+            
             <div className="input-container">
 
                 <InputBox messageError={nameMessageError} message={nameMessage} value={name} label='이름' type='text' placeholder='이름을 입력해주세요.' onChange={onNameChangeHandler} />
@@ -389,11 +409,21 @@ function SignIn({ onPathChange }:AuthComponentProps) {
 
 export default function Auth() {
 
+    // state: Query Parameter 상태 //
+    const [queryParam] = useSearchParams();
+    const snsId = queryParam.get('snsId');
+    const joinPath = queryParam.get('joinPath');
+    // state: 선택 화면 상태 //
     const [path, setPath] = useState<AuthPath>('로그인');
-    
+    // event handler: path 변경 이벤트 처리 //
     const onPathChangeHandler = (path: AuthPath) => {
         setPath(path);
     }
+
+    // effect: 첫 로드시에 Query Param의 SnsId와 JoinPath 존재시 회원가입 화면 전환 함수 //
+    useEffect(() => {
+        if (snsId && joinPath) setPath('회원가입');
+    }, [])
 
     return (
         <div id="auth-wrapper">

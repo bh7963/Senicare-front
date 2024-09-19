@@ -6,5 +6,5 @@ export default interface SignUpRequestDto{
     telNumber: string;
     authNumber: string;
     joinPath: string;
-    snsId?: string;
+    snsId: string | null;
 }

@@ -25,6 +25,7 @@
     -webkit-user-select:none;
     -moz-user-select:none;
     -ms-user-select: none;
+
 }
 
 #layout-logo .box {
@@ -32,7 +33,7 @@
     align-items: center;
     gap: 2px;
 
-    cursor: default;
+    cursor: pointer;
 }
 
 #layout-logo .title{

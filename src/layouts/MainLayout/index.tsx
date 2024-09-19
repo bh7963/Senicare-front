@@ -6,11 +6,16 @@ import { ACCESS_TOKEN, AUTH_APSOLUTE_PATH, AUTH_PATH, CS_APSOLUTE_PATH, CS_PATH,
 
 // component: 로고 컴포넌트 //
 function Logo(){
-
+    // function: 네비게이터 함수 //
+    const navigator = useNavigate();
+    // event handler: 로고 버튼 클릭 이벤트 처리 //
+    const onLogoButtonClickHandler = () => {
+        navigator(CS_APSOLUTE_PATH);
+    }
     // render: 로고 컴포넌트 렌더링 //
     return(
         <div id = 'layout-logo'>
-            <div className='box'>
+            <div className='box'  onClick = {onLogoButtonClickHandler}>
                 <div className = 'title'>시니케어</div>
                 <div className='icon'></div>
             </div>
