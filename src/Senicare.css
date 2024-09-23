@@ -26,6 +26,8 @@ body {
 }
 
 #main-wrapper{
+  display: flex;
+  justify-content: center;
   padding: 24px;
   background-color: rgba(238, 238, 238, 0.5);
 }
@@ -69,7 +71,6 @@ body {
 
 .disalbe:hover{
   opacity: 1;
-  cursor:default;
 }
 
 .full-width {
@@ -122,4 +123,21 @@ body {
 
 .sns-button.naver {
   background-image: url(/public/image/naver-button.png);
+}
+
+.icon-button {
+  width: 24px;
+  height: 24px;
+
+  background-size: 100% 100%;
+
+  cursor: pointer;
+}
+
+.icon-button.edit {
+  background-image: url(/public/image/edit-icon.png);
+}
+
+.icon-button.trash {
+  background-image: url(/public/image/trash-icon.png);
 }
