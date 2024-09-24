@@ -1,0 +1,44 @@
+.pagination-box {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.round-left-button {
+    width: 40px;
+    height: 40px;
+
+    cursor: pointer;
+    background-image: url(/public/image/round-left.png);
+    background-size: 100% 100%;
+}
+
+.round-right-button {
+    width: 40px;
+    height: 40px;
+
+    cursor: pointer;
+    background-image: url(/public/image/round-right.png);
+    background-size: 100% 100%;
+}
+
+.page-list {
+    display: flex;
+    gap: 16px;
+}
+
+.page {
+    color: rgba(138, 146, 166, 1);
+
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+
+    cursor: pointer;
+}
+
+.page.active {
+    color: rgba(64, 64, 64, 1);
+    font-weight: 700;
+    cursor: default;
+}

@@ -1,4 +1,4 @@
-// interface: patch Request Body Dto //
+// interface: patch tool Request Body Dto //
 export default interface PatchToolRequestDto {
     name: string;
     purpose: string;
