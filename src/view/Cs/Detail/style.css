@@ -1,0 +1,236 @@
+#cs-detail-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    width: 1134px;
+}
+
+#cs-detail-wrapper .top {
+    display: flex;
+    gap: 25px;
+}
+
+#cs-detail-wrapper .middle {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#cs-detail-wrapper .middle-bottom {
+    display: flex;
+    justify-content: center;
+}
+
+#cs-detail-wrapper .bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+#cs-detail-wrapper .profile-image{
+    border-radius: 6px;
+    width:134px;
+    height: 180px;
+
+    background-image: url('https://blog.kakaocdn.net/dn/4CElL/btrQw18lZMc/Q0oOxqQNdL6kZp0iSKLbV1/img.png');
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+#cs-detail-wrapper .info-box {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 10px 0;
+}
+
+#cs-detail-wrapper .info-item {
+    display: flex;
+    align-items: center;
+    gap:16px;
+}
+
+#cs-detail-wrapper .info-label {
+    width: 64px;
+
+    color: rgba(64,64,64,1);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+#cs-detail-wrapper .info-text {
+    color: rgba(64,64,64,1);
+    
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+#cs-detail-wrapper .button-box {
+    display: flex;
+    gap: 12px;
+
+}
+
+#cs-detail-wrapper .title {
+    color: rgba(64,64,64,1);
+
+    font-size: 16px;
+    font-weight: 700;
+
+}
+
+#cs-detail-wrapper .td-record-date,
+#cs-detail-wrapper .td-used-tool-count {
+    width: 100px;
+
+    text-align: center;
+}
+
+#cs-detail-wrapper .td-record-contents {
+    flex: 1;
+}
+#cs-detail-wrapper .td-used-tool {
+    width: 120px;
+
+    text-align: center;
+}
+
+#cs-detail-wrapper .record-write-box {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+    border-radius: 8px;
+    border: 1px solid rgba(238,238,238,1);
+    padding: 24px;
+
+    background-color: rgba(255,255,255,1);
+}
+
+#cs-detail-wrapper .record-write-content-box {
+    display: flex;
+    align-items: flex-end;
+    gap: 13px;
+}
+
+#cs-detail-wrapper .input-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#cs-detail-wrapper .label {
+    font-size: 16px;
+    font-weight: 700;
+    color: rgba(64,64,64,1);
+}
+
+#cs-detail-wrapper .record-write-tool-box {
+    display: flex;
+    gap: 18px;    
+}
+
+#cs-detail-wrapper .record-write-tool-box .input {
+    box-sizing: border-box;
+    width: 200px;
+}
+
+#cs-detail-wrapper .selector {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    box-sizing: border-box;
+    padding: 8px 16px;
+    border: 1px solid rgba(238,238,238,1);
+    width: 200px;
+}
+
+#cs-detail-wrapper .selector.close {
+    border-radius: 6px;
+}
+
+#cs-detail-wrapper .selector.open{
+    position: relative;
+
+    border-radius: 6px 6px 0 0;
+    border-bottom: none;
+
+}
+
+#cs-detail-wrapper .selector .selected-item {
+    color: rgba(64,64,64,1);
+    font-family: Inter;
+
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px;
+}
+
+#cs-detail-wrapper .selector .selector-box {
+    z-index: 99999;
+    position: absolute;
+    top: 44px;
+    left: -1px;
+
+    box-sizing: border-box;
+    border-radius: 0 0 6px 6px;
+    border: 1px solid rgba(238,238,238,1);
+    border-top: none;
+    width: 200px;
+    max-height: 132px;
+
+    background-color: rgba(255,255,255,1);
+
+    overflow-y: auto;
+    
+}
+
+#cs-detail-wrapper .selector .selector-box::-webkit-scrollbar {
+    width: 4px;
+    background: none;
+}
+
+#cs-detail-wrapper .selector .selector-box::-webkit-scrollbar-thumb{
+    margin: 4px;
+    width: 4px;
+    background-color: rgba(138,146,166,1);
+    border-radius: 15px;
+}
+
+#cs-detail-wrapper .selector .selector-option {
+    padding: 8px 16px;
+    border-top: 1px solid rgba(238,238,238,1);
+
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 175%;
+
+    cursor: pointer;
+    user-select: none;
+}
+
+#cs-detail-wrapper .selector .arrow-down-button {
+    width: 24px;
+    height: 24px;
+    
+    background-image: url('/public/image/arrow-down.png');
+    background-size: cover;;
+    
+    cursor: pointer;
+}
+
+#cs-detail-wrapper .selector .arrow-up-button {
+    width: 24px;
+    height: 24px;
+    
+    background-image: url('/public/image/arrow-up.png');
+    background-size: cover;;
+    
+    cursor: pointer;
+}

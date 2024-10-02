@@ -1,0 +1,26 @@
+#hr-wrapper .th,
+#hr-wrapper .tr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#hr-wrapper .td-nurse-infos {
+    display: flex;
+    gap: 80px;
+}
+
+#hr-wrapper .td-nurse-id {
+    width: 120px;
+    text-align: center;
+}
+
+#hr-wrapper .td-nurse-name {
+    width: 120px;
+    text-align: center;
+}
+
+#hr-wrapper .td-nurse-tell {
+    width: 200px;
+    text-align: center;
+}

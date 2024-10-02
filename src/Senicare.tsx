@@ -15,8 +15,8 @@ import { useSearchParams } from 'react-router-dom';
 import { getSignInRequest } from './apis';
 import { GetSignInResponseDto } from './apis/dto/response/nurse';
 import { ResponseDto } from './apis/dto/response';
-import { useStore } from 'zustand';
 import { useSignInUserStore } from './stores';
+import HRDetail from './view/Hr/Detail';
 
 
 // component: root path 컴포넌트 //
@@ -113,15 +113,15 @@ export default function Senicare() {
         <Route path={CS_PATH} element={<MainLayout />}>
             <Route index element={<Cs />} />
             <Route path={CS_WRITE_PATH} element={<CSWrite/>} />
-            <Route path={CS_DETAIL_PATH(':customNumber')} element={<CSDetail/>} />
-            <Route path={CS_UPDATE_PATH(':customNumber')} element={<CSUpdate/>} />
+            <Route path={CS_DETAIL_PATH(':customerNumber')} element={<CSDetail/>} />
+            <Route path={CS_UPDATE_PATH(':customerNumber')} element={<CSUpdate/>} />
         </Route>
         <Route path={MM_PATH} element={<MainLayout />}>
             <Route index element={<MM />} />
         </Route>
         <Route path={HR_PATH} element={<MainLayout />}>
             <Route index element={<Hr/>} />
-            <Route path={HR_DETAIL_PATH(':userId')} element={<></>} />
+            <Route path={HR_DETAIL_PATH(':userId')} element={<HRDetail/>} />
         </Route>
         <Route path={SNS_SUCCESS_PATH} element={<SnsSuccess />} />
         <Route path={OTHERS_PATH} element={<Index />} />

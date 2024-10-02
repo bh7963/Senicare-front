@@ -35,21 +35,7 @@ const usePageination = <T>() => {
         setCurrentPage(currentPage*PAGES_PER_SECTION+1)
     };
 
-    // effect: totalList가 변경될 시 실행할 함수  //
-    useEffect(() => {
-        init(totalList);
-    }, [totalList]);
-
-    // effect: 현재 섹션이 변경될 시 실행할 함수 //
-    useEffect(() => {
-        initPageList(totalPage);
-    }, [totalCount, currentSection]);
-
-    // effect: 현재 페이지가 변경 될 시 실행할 함수 //
-    useEffect(() => {
-        initViewList(totalList);
-    }, [currentPage]);
-
+    
     // function: 전체 리스트 변경 함수 //
     const init = (totalList: T[]) => {
         const totalCount = totalList.length;
@@ -62,8 +48,7 @@ const usePageination = <T>() => {
         setCurrentPage(1);
         setCurrentSection(1);
 
-        initViewList(totalList);
-        
+        initViewList(totalList); 
     };
 
     // function: 섹션 변경 함수 //
@@ -94,6 +79,22 @@ const usePageination = <T>() => {
         const viewList = totalList.slice(startIndex, endIndex);
         setViewList(viewList);
     }
+
+    // effect: totalList가 변경될 시 실행할 함수  //
+    useEffect(() => {
+        init(totalList);
+    }, [totalList]);
+
+    // effect: 현재 섹션이 변경될 시 실행할 함수 //
+    useEffect(() => {
+        initPageList(totalPage);
+    }, [totalCount, currentSection]);
+
+    // effect: 현재 페이지가 변경 될 시 실행할 함수 //
+    useEffect(() => {
+        initViewList(totalList);
+    }, [currentPage]);
+
 
     return {
         currentPage,

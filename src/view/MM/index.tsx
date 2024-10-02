@@ -305,11 +305,11 @@ export default function MM() {
     // state: 원본 리스트 상태 //
     const [originalList, setOriginalList] = useState<Tool[]>([]);
 
-    // state: pagination 상태//
-    const { 
-        currentPage, totalPage, totalCount, viewList, pageList, 
-        setTotalList, initViewList, onPreSectionClickHandler,
-        onNextSectionClickHandler, onPageClickHandler
+    // state: 페이징 관련 상태 //
+    const {
+        currentPage,totalPage,totalCount,
+        viewList,setTotalList,initViewList,
+        ...paginationProps
     } = usePageination<Tool>();
 
     // function: tool list 불러오기 //
@@ -397,13 +397,7 @@ export default function MM() {
                 </div>
             </div>
             <div className='bottom'>
-                <Pagination 
-                pageList={pageList} 
-                currentPage={currentPage} 
-                onPageClickHandler={onPageClickHandler} 
-                onPreSectionClickHandler={onPreSectionClickHandler} 
-                onNextSectionClickHandler={onNextSectionClickHandler}
-                />
+                <Pagination currentPage={currentPage} { ...paginationProps } />
                 <div className='search-box'>
                     <input value={searchWord} className='search-input' placeholder='검색어를 입력하세요. ' onChange={onSearchChangeHandler}/>
                     <div className='button disable' onClick={onSearchButtonClickHandler}>검색</div>

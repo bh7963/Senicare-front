@@ -5,8 +5,8 @@ export const AUTH_PATH = '/auth';
 
 export const CS_PATH = '/cs';
 export const CS_WRITE_PATH = 'write';
-export const CS_DETAIL_PATH = (customNumber: string | number) => `${customNumber}`;
-export const CS_UPDATE_PATH = (customNumber: string | number) => `${customNumber}/update`; 
+export const CS_DETAIL_PATH = (customerNumber: string | number) => `${customerNumber}`;
+export const CS_UPDATE_PATH = (customerNumber: string | number) => `${customerNumber}/update`; 
 export const MM_PATH = '/mm'
 
 export const HR_PATH = '/hr';

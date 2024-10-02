@@ -1,11 +1,3 @@
-#mm-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-
-    width: 1134px;
-
-}
 
 #mm-wrapper .post-patch-box {
     display: flex;
@@ -17,30 +9,6 @@
     padding: 24px;
 
     background-color: rgba(255,255,255,1);
-}
-
-#mm-wrapper .top {
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
-}   
-
-#mm-wrapper .main{
-    display: flex;
-    flex-direction: column;
-
-    border: 1px solid rgba(238, 238, 238, 1);
-    border-radius: 8px;
-    background-color: rgba(255,255,255,1);
-}
-
-#mm-wrapper .bottom {
-    position: relative;
-    
-    display: flex;
-    justify-content: center;
-
-    margin-top: 8px;
 }
 
 #mm-wrapper .post-patch-input-container{
@@ -64,53 +32,6 @@
     font-weight: 700;
 }
 
-#mm-wrapper .top-text {
-    color: rgba(138, 146, 166, 1);
-    font-size: 16px;
-    font-weight: 400;
-}
-
-#mm-wrapper .top-text .emphasis{
-    color: rgba(64, 64, 64, 1);
-}
-
-#mm-wrapper .button.disable:hover{
-    cursor:pointer;
-}
-
-#mm-wrapper .table {
-    display: flex;
-    flex-direction: column;
-    border-radius: 8px;
-    border: 1px solid rgba(238, 238, 238, 1);
-    
-    background-color: rgba(255,255,255,1);
-}
-
-#mm-wrapper .th {
-    display: flex;
-
-    gap: 80px;
-    padding: 15px 24px;
-
-    color: rgba(64, 64, 64, 1);
-    font-size: 16px;
-    font-weight: 700;
-}
-
-#mm-wrapper .tr {
-    display: flex;
-    gap: 80px;
-
-    border-top: 1px solid rgba(238, 238, 238, 1);
-    padding: 15px 24px;
-
-    color: rgba(64, 64, 64, 1);
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 20px;
-}
-
 #mm-wrapper .td-tool-number,
 #mm-wrapper .td-name,
 #mm-wrapper .td-count {
@@ -129,38 +50,3 @@
     text-align: left;
 }
 
-#mm-wrapper .td-buttons {
-    display: flex;
-    gap: 6px;
-}
-
-#mm-wrapper .td-edit,
-#mm-wrapper .td-delete {
-    justify-content: center;
-    text-align: center;
-
-    width: 80px;
-}
-
-#mm-wrapper .search-box {
-    position: absolute;
-    right: 0;
-
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-#mm-wrapper .search-input {
-    box-sizing: border-box;
-    border-radius: 6px;
-    border: 1px solid rgba(238, 238, 238, 1);
-    padding: 8px 16px;
-
-    outline: none;
-
-    font-family: Inter;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 7px;
-}

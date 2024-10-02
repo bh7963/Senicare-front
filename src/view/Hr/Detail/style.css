@@ -1,0 +1,103 @@
+#hr-detail-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    width: 1134px;
+}
+
+#hr-detail-wrapper .top {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 140px;
+}
+
+#hr-detail-wrapper .info-box {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+#hr-detail-wrapper .info-box .label {
+    width: 64px;
+
+    font-size: 16px;
+    font-weight: 700;
+    color: rgba(64,64,64,1);
+}
+
+#hr-detail-wrapper .info-box .text {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+#hr-detail-wrapper .input {
+    flex: 1;
+    
+    outline: none;
+    border-radius: 6px;
+    border: 1px solid rgba(238,238,238,1);
+    padding: 8px 16px;
+
+    background-color: rgba(255,255,255,1);
+
+    color: rgba(64,64,64,1);
+
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 175%;
+}
+
+#hr-detail-wrapper .middle {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#hr-detail-wrapper .title {
+    color: rgba(64,64,64,1);
+
+    font-size: 16px;
+    font-weight: 700;
+}
+
+#hr-detail-wrapper .th,
+#hr-detail-wrapper .tr {
+    gap: 100px;
+}
+
+#hr-detail-wrapper .td-customer-number,
+#hr-detail-wrapper .td-customer-name,
+#hr-detail-wrapper .td-customer-age {
+    width: 100px;
+
+    text-align: center;
+}
+
+#hr-detail-wrapper .td-customer-age {
+    width: 120px;
+
+    text-align: center;
+}
+
+#hr-detail-wrapper .middle-bottom {
+    display: flex;
+    justify-content: center;
+}
+
+#hr-detail-wrapper .bottom {
+    display: flex;
+    justify-content: space-between;
+}
+#hr-detail-wrapper .button-box {
+    display: flex;
+    gap: 12px;
+}
+
+
+
+

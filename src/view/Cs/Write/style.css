@@ -1,0 +1,180 @@
+#cs-write-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    width: 1134px;
+}
+
+#cs-write-wrapper .main{
+    display: flex;
+    gap: 25px;
+}
+
+#cs-write-wrapper .bottom{
+    display: flex;
+    justify-content: space-between; 
+}
+
+#cs-write-wrapper .profile-image{
+    border-radius: 6px;
+    width: 134px;
+    height: 180px;
+
+    background-image: url(https://blog.kakaocdn.net/dn/4CElL/btrQw18lZMc/Q0oOxqQNdL6kZp0iSKLbV1/img.png);
+    background-position: 50% 50%;
+    background-size: cover;
+
+    cursor: pointer;
+}
+
+#cs-write-wrapper .input-container {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#cs-write-wrapper .input-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+}
+
+#cs-write-wrapper .input-label {
+    width: 64px;
+
+    color: rgba(64,64,64,1);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+#cs-write-wrapper .input{
+    height: 20px;
+}
+
+#cs-write-wrapper .button-box {
+    display: flex;
+    gap: 10px;
+}
+
+#cs-write-wrapper .input-box .button {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 inherit;
+    height: 35px;
+}
+
+#cs-write-wrapper .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(0,0,0,0.3);
+}
+
+#cs-write-wrapper .modal-box {
+    position: relative;
+
+    box-sizing: border-box;
+    border: 1px solid rgba(238, 238, 238, 1);
+    border-radius: 8px;
+    padding: 24px;
+    width: 640px;
+    height: 780px;
+
+    background: rgba(255, 255, 255, 1);
+}
+
+#cs-write-wrapper .modal-top {
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+#cs-write-wrapper .modal-label {
+    color: rgba(64,64,64,1);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+#cs-write-wrapper .modal-input-box {
+    display: flex;
+    gap: 12px;
+}
+
+#cs-write-wrapper .modal-input {
+    flex:1;
+
+    border-radius: 6px;
+    border: 1px solid rgba(238, 238, 238, 1);
+    padding: 8px 16px;
+
+    background:none ;
+    outline: none;
+
+    color: rgba(64,64,64,1);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 175%;
+}
+
+#cs-write-wrapper .modal-main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+#cs-write-wrapper .modal-main .th,
+#cs-write-wrapper .modal-main .tr {
+    gap: 52px;
+}
+
+#cs-write-wrapper .modal-main .tr {
+    cursor: pointer;
+}
+
+#cs-write-wrapper .modal-main .td-nurse-id,
+#cs-write-wrapper .modal-main .td-nurse-tel-number {
+    width: 160px;
+    text-align: center;
+}
+
+#cs-write-wrapper .modal-main .td-nurse-name {
+    width: 120px;
+
+    text-align: center;
+}
+
+#cs-write-wrapper .modal-pagination-box {
+    display: flex;
+    justify-content: center;
+}
+
+#cs-write-wrapper .modal-bottom {
+    position:absolute;
+    left: 0;
+    bottom: 24px;
+
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+}
+
+#cs-write-wrapper .modal-bottom .button {
+    box-sizing: border-box;
+    width: 200px;
+}
